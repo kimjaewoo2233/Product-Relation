@@ -2,6 +2,7 @@ package com.data.productdata.data.entity;
 
 
 import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @Table(name = "product")
 public class Product extends BaseEntity {
     @Id
@@ -25,5 +27,13 @@ public class Product extends BaseEntity {
     @Column(nullable = false)
     private Integer stock;
 
+    @OneToOne(mappedBy="product")
+    @ToString.Exclude
+    ProductDetail productDetail;
+
+    @ManyToOne
+    @JoinColumn(name="provider_id")
+    @ToString.Exclude
+    private Provider provider;
 
 }
