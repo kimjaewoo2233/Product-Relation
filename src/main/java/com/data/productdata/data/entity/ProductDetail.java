@@ -1,10 +1,7 @@
 package com.data.productdata.data.entity;
 
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -17,6 +14,7 @@ import javax.persistence.*;
 public class ProductDetail extends BaseEntity{
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Setter(AccessLevel.NONE)
         private Long id;
 
         private String description;
