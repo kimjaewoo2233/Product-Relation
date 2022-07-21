@@ -5,6 +5,8 @@ import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -36,4 +38,20 @@ public class Product extends BaseEntity {
     @ToString.Exclude
     private Provider provider;
 
+    @ManyToMany
+    @ToString.Exclude
+    List<Producer> producers = new ArrayList<>();
+
+    public void addProducer(Producer producer){
+        producers.add(producer);
+    }
+
+    Product(String name,int price,int stock){
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
+    public static Product of(String name,int price,int stock){
+        return new Product(name,price,stock);
+    }
 }
