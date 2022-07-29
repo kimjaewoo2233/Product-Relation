@@ -38,4 +38,24 @@ class CategoryRepositoryTest {
         categoryRepository.findById(1L).get().getProducts().forEach(System.out::println);
 
     }
+
+    @Test
+    void test2(){
+        Category category = new Category();
+        category.setName("필기구");
+        category.setCode("str");
+
+        Category saveCategoty = categoryRepository.save(category);
+        Product product = Product.of("연필",100,10);
+        product.setCategory_id(saveCategoty);
+        Product product2 = Product.of("연필",100,10);
+        product2.setCategory_id(saveCategoty);
+
+        productRepository.save(product);
+        productRepository.save(product2);
+
+        System.out.println(productRepository.findById(1L).get().getCategory_id());
+
+
+    }
 }

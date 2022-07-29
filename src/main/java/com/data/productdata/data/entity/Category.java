@@ -24,8 +24,9 @@ public class Category {
 
         private String name;
 
-        @OneToMany(fetch = FetchType.EAGER)
-        @JoinColumn(name = "category_id")
-        private List<Product> products =new ArrayList<>();
+        @OneToMany(fetch = FetchType.EAGER,mappedBy = "category_id")//일대다 단방향 매핑이다 여기서 특이한 점은 category_id라는 Fk를 이 테이블이 아닌
+        private List<Product> products =new ArrayList<>();      //Product가가진다 큰 단점이다
+                //원래 이 테이블에 외래키가 있으면 엔티티의 저장과 연관관계 처리를 INSERT SQL 한번으로 끝낼 수 있지만
+                //다른 테이블에 외래키가 있다면 연관관계를 처리를 위한 UPDATE 를 한번 더 일으켜야한다.
 
 }

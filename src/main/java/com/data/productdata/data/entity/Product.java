@@ -1,6 +1,8 @@
 package com.data.productdata.data.entity;
 
 
+import com.data.productdata.data.dto.ProductStatus;
+import com.data.productdata.data.entity.convertor.ProductStatusConvertor;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -34,9 +36,16 @@ public class Product extends BaseEntity {
     ProductDetail productDetail;
 
     @ManyToOne
+    @JoinColumn(name="category_id")
+    @ToString.Exclude
+    private Category category_id;
+    @ManyToOne
     @JoinColumn(name="provider_id")
     @ToString.Exclude
     private Provider provider;
+
+//    @Convert(converter = ProductStatusConvertor.class)
+//    private ProductStatus status;
 
     @ManyToMany
     @ToString.Exclude

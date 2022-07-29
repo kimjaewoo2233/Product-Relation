@@ -24,5 +24,8 @@ public class Provider extends BaseEntity {
     @ToString.Exclude
     private List<Product> products = new ArrayList<>();
 
+    public void addProduct(Product product){
+        this.products.add(product);
+    }
 
 }
