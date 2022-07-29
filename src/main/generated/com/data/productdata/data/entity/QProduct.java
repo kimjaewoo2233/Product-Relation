@@ -24,6 +24,8 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final QBaseEntity _super = new QBaseEntity(this);
 
+    public final QCategory category_id;
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
 
@@ -32,6 +34,8 @@ public class QProduct extends EntityPathBase<Product> {
     public final NumberPath<Long> number = createNumber("number", Long.class);
 
     public final NumberPath<Integer> price = createNumber("price", Integer.class);
+
+    public final ListPath<Producer, QProducer> producers = this.<Producer, QProducer>createList("producers", Producer.class, QProducer.class, PathInits.DIRECT2);
 
     public final QProductDetail productDetail;
 
@@ -60,6 +64,7 @@ public class QProduct extends EntityPathBase<Product> {
 
     public QProduct(Class<? extends Product> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.category_id = inits.isInitialized("category_id") ? new QCategory(forProperty("category_id")) : null;
         this.productDetail = inits.isInitialized("productDetail") ? new QProductDetail(forProperty("productDetail"), inits.get("productDetail")) : null;
         this.provider = inits.isInitialized("provider") ? new QProvider(forProperty("provider")) : null;
     }

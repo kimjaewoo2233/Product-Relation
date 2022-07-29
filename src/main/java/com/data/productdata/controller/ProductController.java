@@ -24,7 +24,7 @@ public class ProductController {
     @PostMapping()
     public ResponseEntity<ProductResponseDto> createProduct(
             @RequestBody ProductDto dto
-    ){  //id값은 자동지정이기에 dto로 받지만 다시 돌려받을떄는 id가 필요하다 그래서 response객체를 따로 만듬
+    ){
         ProductResponseDto responseDto = service.saveProduct(dto);
 
         return ResponseEntity.status(HttpStatus.OK).body(responseDto);
