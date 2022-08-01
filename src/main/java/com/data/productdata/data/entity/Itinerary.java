@@ -1,5 +1,6 @@
 package com.data.productdata.data.entity;
 
+import com.data.productdata.data.entity.embeddable.SiteInfo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,10 +29,13 @@ public class Itinerary {
                 name = "itinerary_site",
                 joinColumns = @JoinColumn(name="itinerary_id"))
         @OrderColumn(name = "list_idx")
-        @Column(name = "site")
-        private List<String> sites;
+        private List<SiteInfo> sites;
 
-        public Itinerary(String name,String description,List<String> sites){
+        public Itinerary(String name,String description){
+            this.name = name;
+            this.description = description;
+        }
+        public Itinerary(String name,String description,List<SiteInfo> sites){
             this.name = name;
             this.description = description;
             this.sites = sites != null ? sites : new ArrayList<>();
