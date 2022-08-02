@@ -26,7 +26,7 @@ public class QItinerary extends EntityPathBase<Itinerary> {
 
     public final StringPath name = createString("name");
 
-    public final ListPath<com.data.productdata.data.entity.embeddable.SiteInfo, com.data.productdata.data.entity.embeddable.QSiteInfo> sites = this.<com.data.productdata.data.entity.embeddable.SiteInfo, com.data.productdata.data.entity.embeddable.QSiteInfo>createList("sites", com.data.productdata.data.entity.embeddable.SiteInfo.class, com.data.productdata.data.entity.embeddable.QSiteInfo.class, PathInits.DIRECT2);
+    public final ListPath<String, StringPath> sites = this.<String, StringPath>createList("sites", String.class, StringPath.class, PathInits.DIRECT2);
 
     public QItinerary(String variable) {
         super(Itinerary.class, forVariable(variable));

@@ -30,6 +30,7 @@ public class UserKeword {
             joinColumns = @JoinColumn(name = "user_email")
     )
     @Column(name = "keword")
+    @org.hibernate.annotations.OrderBy(clause = "user_keyword")
     private Set<String> keywords = new HashSet<>();
 
     protected UserKeword(){
