@@ -29,13 +29,13 @@ public class Itinerary {
                 name = "itinerary_site",
                 joinColumns = @JoinColumn(name="itinerary_id"))
         @OrderColumn(name = "list_idx")
-        private List<SiteInfo> sites;
+        private List<String> sites;
 
         public Itinerary(String name,String description){
             this.name = name;
             this.description = description;
         }
-        public Itinerary(String name,String description,List<SiteInfo> sites){
+        public Itinerary(String name,String description,List<String> sites){
             this.name = name;
             this.description = description;
             this.sites = sites != null ? sites : new ArrayList<>();
